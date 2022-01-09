@@ -1,5 +1,6 @@
 <template>
 <div class="card">
+    
       <v-card
         class="card
         d-flex
@@ -38,27 +39,27 @@
                   >
                     <v-radio
                       label="Drama"
-                      value="Drama"
+                      value="drama"
                     ></v-radio>
                     <v-radio
                       label="Komedi"
-                      value="Komedi"
+                      value="comedy"
                     ></v-radio>
                     <v-radio
                       label="Romantik"
-                      value="Romantik"
+                      value="romance"
                     ></v-radio>
                     <v-radio
                       label="Skräck"
-                      value="Skräck"
+                      value="horror"
                     ></v-radio>
                     <v-radio
                       label="Action"
-                      value="Action"
+                      value="action"
                     ></v-radio>
                     <v-radio
                       label="Science Fiction"
-                      value="Science Fiction"
+                      value="scifi"
                     ></v-radio>
                     
                     
@@ -115,7 +116,7 @@ export default {
       this.dialog = false
       let selectedStreamingSite = this.img.split('.')[0];
       
-      this.$axios.put(url + selectedStreamingSite, {fingerprint: this.visitorId})
+      this.$axios.put(url + selectedStreamingSite, {fingerprint: this.visitorId, favoriteGenre: this.dialogm1})
 
     }
   },
