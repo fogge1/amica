@@ -92,6 +92,10 @@
 </template>
 <script>
 
+import FingerprintJS from '@fingerprintjs/fingerprintjs'
+
+
+
 const url = 'api/vote/';
 
 export default {
@@ -103,17 +107,29 @@ export default {
     return {
       dialogm1: "",
       dialog: false,
+      visitorId: ''
     };
   },
   methods: {
     vote : function () {
       this.dialog = false
       let selectedStreamingSite = this.img.split('.')[0];
+      
+      this.$axios.put(url + selectedStreamingSite, {fingerprint: this.visitorId})
 
-      const res = this.$axios.put(url + selectedStreamingSite)
-
-      console.log(res)
     }
+  },
+  created() {
+    const fpPromise = FingerprintJS.load()
+
+    // Get the visitor identifier when you need it.
+    fpPromise
+      .then(fp => fp.get())
+      .then(result => {
+        // This is the visitor identifier:
+        this.visitorId = result.visitorId
+        
+      })
   }
 }
 </script>
