@@ -110,10 +110,9 @@ export default {
       this.dialog = false
       let selectedStreamingSite = this.img.split('.')[0];
 
-      this.$axios.put(url + selectedStreamingSite)
-        .catch((err) => {
-          console.log(err)
-        })
+      const res = this.$axios.put(url + selectedStreamingSite)
+
+      console.log(res)
     }
   }
 }
