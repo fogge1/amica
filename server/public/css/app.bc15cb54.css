@@ -1,0 +1,1 @@
+.gridContainer{padding:15px;display:grid;margin-top:200px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;grid-auto-rows:400px}.white{background-color:#f0f8ff;height:200px}.phoneNumber{text-align:center}.creators{margin-left:50px}.centerPart{text-align:center}.centerPart,.main{margin-top:0}
