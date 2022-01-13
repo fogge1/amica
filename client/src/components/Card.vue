@@ -7,8 +7,8 @@
         align-content-end
         flex-wrap ml-5"
         width="
-        350px"
-        height="200px"
+        90%"
+        height="50%"
         color="red darken-4"
       >
       <v-img :src="require(`@/assets/${img}`)" width="350px" height="350px" ></v-img>
@@ -87,7 +87,15 @@
           </v-row>
 
       </v-card>
-
+      <v-snackbar
+        v-model="snackbar"
+        color="red accent-2"
+        timeout="2000"
+      
+        elevation="24"
+      >
+      <h1 class="center">Du har redan röstat!</h1>
+    </v-snackbar>
     </div>
     
 </template>
@@ -108,16 +116,23 @@ export default {
     return {
       dialogm1: "",
       dialog: false,
-      visitorId: ''
+      visitorId: '',
+      snackbar: false,
     };
   },
   methods: {
-    vote : function () {
+    vote : async function () {
       this.dialog = false
       let selectedStreamingSite = this.img.split('.')[0];
-      
-      this.$axios.put(url + selectedStreamingSite, {fingerprint: this.visitorId, favoriteGenre: this.dialogm1})
+      let checkVoted = await this.$axios.get('api/fingerprint/' + this.visitorId)
+      console.log(checkVoted.data)
 
+      if(checkVoted.data) {
+        this.snackbar = true
+      }
+      else {
+        await this.$axios.put(url + selectedStreamingSite, {fingerprint: this.visitorId, favoriteGenre: this.dialogm1})
+      }
     }
   },
   created() {
@@ -134,3 +149,12 @@ export default {
   }
 }
 </script>
+
+<style >
+
+.center {
+  text-align: center;
+  /* align-items: center; */
+}
+
+</style>

@@ -20,26 +20,6 @@
         :img="'viaply.png'"
       />
     </div>
-    <div class="white">
-      <div class="creators">
-        <h2>CREATORS:</h2><p>lorrepro</p><p>lavinpro</p><p>isakpro</p>
-      </div>
-      
-      <div class="centerPart">
-        <div >
-        <a href="https://accounts.snapchat.com/accounts/snapcodes">
-            <img
-                max-height="50px"
-                max-width="50px" 
-                src='../assets/snapchat.jpg' 
-            />
-        </a>
-        </div>
-        <div class="phoneNumber">
-        <a href="tel:0723335062">swish om du king---> 072-333-50-62</a>
-        </div>
-      </div>
-    </div>
 
   </v-content>
 </template>
@@ -60,27 +40,25 @@ export default {
 </script>
 <style>
 .gridContainer {
-  padding: 15px;
   display: grid;
   margin-top: 200px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  justify-items: center;
+  justify-content: center;
+  /* gap: 1%; */
   grid-auto-rows: 400px;
 }
-.white{
-  background-color: aliceblue;
-  height: 200px;
-}
-.phoneNumber{
-  text-align: center;
+
+@media (min-width: 800px) {
+  .gridContainer { grid-template-columns: repeat(2, 1fr); }
 }
 
-.creators{
-  margin-left:50px;
+@media (min-width: 1200px) {
+  .gridContainer { grid-template-columns: repeat(3, 1fr); }
 }
-.centerPart{
+
+/* .centerPart{
   text-align: center;
   margin-top: 0px;
-}
+} */
 
 </style>
