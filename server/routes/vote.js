@@ -23,6 +23,8 @@ router.put('/:siteName', async (req, res) => {
   
   if (await Fingerprint.findOne({fingerprint: req.body.fingerprint})) return res.status(400).send("Already voted")
 
+  if (!req.body.favoriteGenre) return res.status(400).send("You haven't selected a genre")
+
   const site = await StreamingSite.findOne({name: req.params.siteName})
   const streamingSite = await StreamingSite.findByIdAndUpdate(site.id, {votes: site.votes+1, [req.body.favoriteGenre]: site[req.body.favoriteGenre]+1 })
 

@@ -94,7 +94,7 @@
       
         elevation="24"
       >
-      <h1 class="center">Du har redan röstat!</h1>
+      <h1 class="center">{{text}}</h1>
     </v-snackbar>
     </div>
     
@@ -114,20 +114,25 @@ export default {
     },
     data() {
     return {
-      dialogm1: "",
+      dialogm1: false,
       dialog: false,
       visitorId: '',
       snackbar: false,
+      text: ''
     };
   },
   methods: {
     vote : async function () {
-      this.dialog = false
+      if (!this.dialogm1) {
+        this.text = 'Du måste välja en genre för att rösta'
+        this.snackbar = true
+        return 
+      }
       let selectedStreamingSite = this.img.split('.')[0];
       let checkVoted = await this.$axios.get('api/fingerprint/' + this.visitorId)
-      console.log(checkVoted.data)
-
+      this.dialog = false
       if(checkVoted.data) {
+        this.text = 'Du har redan röstat'
         this.snackbar = true
       }
       else {
