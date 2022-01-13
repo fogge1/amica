@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const { StreamingSite } = require('../models/streamingSite.js')
-const { Fingerpint, Fingerprint } = require('../models/fingerprint.js')
- 
+const {  Fingerprint } = require('../models/fingerprint.js')
+
 router.post('/', async (req, res) => {
     
 

@@ -1,0 +1,1 @@
+.center{text-align:center}.gridContainer{display:grid;margin-top:200px;justify-items:center;justify-content:center;grid-auto-rows:400px}@media (min-width:800px){.gridContainer{grid-template-columns:repeat(2,1fr)}}@media (min-width:1200px){.gridContainer{grid-template-columns:repeat(3,1fr)}}.main{margin-top:0}

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const vote = require('./routes/vote.js')
+const fingerprint = require('./routes/fingerprint.js')
 const { allowCrossDomain } = require('./middleware/cors');
 
 mongoose.connect('mongodb+srv://isakfogelberg:amicaproject@amica.ehjuk.mongodb.net/amica?retryWrites=true&w=majority')
@@ -12,6 +13,7 @@ mongoose.connect('mongodb+srv://isakfogelberg:amicaproject@amica.ehjuk.mongodb.n
 app.use(express.json());
 app.use(allowCrossDomain);
 app.use('/api/vote', vote)
+app.use('/api/fingerprint', fingerprint)
 
 // Handle production
 
