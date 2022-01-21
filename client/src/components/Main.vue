@@ -19,16 +19,26 @@
       <Card
         :img="'viaply.png'"
       />
+      <CardDiagram
+        :imga="'hbo.jpg'"
+        :Text="'hbo'" 
+        :White="'whitecopy.jpg'"
+      />
+      
     </div>
 
   </v-content>
 </template>
 <script>
 import Card from "./Card"
+import CardDiagram from "./CardDiagram"
+
+
 
 export default {
   components: {
-    Card,
+    Card, CardDiagram 
+  
   },
   data () {
     return {
